@@ -1,6 +1,9 @@
 <% @restaurants.each do |restaurant| %>
-  <h3><%= restaurant.name %></h3>
-  <p><%= truncate(restaurant.description, length: 100) %></p>
+  <div class="col-sm-4">
+    <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+    <small>[<%= restaurant.category.name %>]</small>
+    <p><%= truncate(restaurant.description, length: 80) %></p>
+  </div>
 <% end %>
 
 <%= paginate @restaurants %>
