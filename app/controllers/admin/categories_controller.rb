@@ -31,6 +31,11 @@ class Admin::CategoriesController < Admin::BaseController
       render :index
     end
   end
+  
+  def destroy
+    @category.destroy
+    redirect_to admin_categories_path
+  end
 
   def destroy
     @category.destroy
