@@ -1,1 +1,44 @@
-<%= render partial: "shared/restaurants" %>
+<!-- nav-tabs restaurants/index, category/show, ranking, users/index -->
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-pills nav-pills-center">
+      <!-- 如果是在root_path全部餐廳 li.active -->
+      <li role="presentation" class="active">
+        <%= link_to "全部餐廳", root_path %>
+      </li>
+      <% @categories.each do |category| %>
+        <li role="presentation">
+          <%= link_to category_path(category) do %>
+            <%= category.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <br>
+
+    <!-- restaurants list，有多寫restaurant-item的class style -->
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="restaurant-item">
+          <%= link_to restaurant_path(restaurant) do %>
+            <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+          <% end %>
+          <div class="caption">
+            <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+            <p><%= truncate(restaurant.description, length: 80) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>
+
+    <!-- 有generate kaminari paginate bootstrap style -->
+    <div class="text-center">
+      <%= paginate @restaurants %>
+    </div>
+
+  </div>
+</div>

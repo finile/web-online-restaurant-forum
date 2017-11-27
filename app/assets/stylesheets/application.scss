@@ -14,3 +14,31 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+.nav-pills-center{
+  text-align: center;
+}
+.nav-pills-center > li{
+  float: none;
+  display: inline-block;
+}
+.restaurant-item{
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 340px;
+}
+
+.restaurant-item img {
+  max-height: 200px;
+  width: 100%;
+}
+
+.restaurant-item .caption{
+  padding: 10px;
+}
+.ranking-item{
+  margin-bottom: 15px;
+}
