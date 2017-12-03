@@ -11,10 +11,13 @@
       <hr>
     <% end %>
 
+    <!-- [:admin, @category] :admin 是 namespace 的路徑。 -->
     <%= form_for [:admin, @restaurant] do |f| %>
 
       <div class="form-group">
         <%= f.label :category %>
+        <!-- 這裡使用了collection_select帶入需要的參數就能幫我們產生一個下拉式選單。 -->
+        <!-- https://apidock.com/rails/ActionView/Helpers/FormBuilder/collection_select -->
         <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
       </div>
 
@@ -45,6 +48,10 @@
 
       <div class="form-group">
         <%= f.label :image, "Photo" %>
+        <!-- 這裡的if跟下面的code是一樣的，這是ruby整潔的寫法。 -->
+        <!-- if @restaurant.image? -->
+        <!--   image_tag @restaurant.image, width: '300px' -->
+        <!-- end -->
         <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
         <%= f.file_field :image %>
       </div>
