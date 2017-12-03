@@ -2,6 +2,22 @@
 
 <div class="container">
   <div class="row">
+    <% @restaurant.comments.each do |comment| %>
+
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.user.email %></h4>
+          <p><%= simple_format comment.comment %></p>
+          <p class="text-muted">
+            <% if comment.user.email == current_user.email %>
+              <%= link_to 'Edit', restaurant_path( @restaurant, comment_id: comment.id ) %>
+              <%= link_to 'Destroy', restaurant_comment_path( @restaurant, comment.id ),  method: :delete %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
   <!-- 增加評論的form，加form-group在外面和,class: "form-control" -->
   <%= form_for([@restaurant, @comment]) do |f| %>
     <div class="form-group">
