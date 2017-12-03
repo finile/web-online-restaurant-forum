@@ -29,13 +29,16 @@ namespace :dev do
 
   task fake_comment: :environment do
     Restaurant.all.each do |restaurant|
-      restaurant.comments.create!(
-        comment: FFaker::Lorem.sentence,
-        user: User.all.sample
-      )
+      5.times do |i|
+        restaurant.comments.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
     end
     puts "have created fake comments"
     puts "now you have #{Comment.count} comment data"
   end
+
 
 end
