@@ -1,1 +1,16 @@
 <%= render partial: "shared/restaurant" %>
+
+<div class="container">
+  <div class="row">
+  <!-- 增加評論的form，加form-group在外面和,class: "form-control" -->
+  <%= form_for([@restaurant, @comment]) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", restaurant_path(@restaurant)%>
+    </div>
+  <% end %>
+  </div>
+</div>
