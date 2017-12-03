@@ -7,11 +7,5 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-
-    if params[:comment_id]
-      @comment = Comment.find(params[:comment_id])
-    else
-      @comment = Comment.new
-    end
   end
 end
