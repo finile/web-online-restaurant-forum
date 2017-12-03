@@ -17,6 +17,11 @@ class RestaurantCommentsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to restaurant_path(@restaurant)
+  end
+
   private
 
   def comment_params
