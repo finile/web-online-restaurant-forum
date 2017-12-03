@@ -1,9 +1,11 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, only: [:update, :destroy]
+  # 這裡我們只使用index 這個 template，所以統一 render or redirect 到 index
 
   def index
     @categories = Category.all
 
+    # 這裡是new or edit 的form所需要的值，如果有url有id就將form帶入edit，沒有就new。
     if params[:id]
       set_category
     else
