@@ -7,6 +7,7 @@
   </div>
   <br>
   <div class="form-inline" >
+    <!-- [:admin, @category] :admin 是 namespace 的路徑。 -->
     <%= form_for [:admin, @category] do |f| %>
       <div class="form-group">
         <%= f.text_field :name, placeholder: "Category Name",  class: "form-control" %>
@@ -37,6 +38,8 @@
             <th scope="row"><%= category.id %></th>
             <td><%= category.name %></td>
             <td>
+              <!-- 因為我們只有index.html.erb，所以這裡的edit我們加上params[:id]到url裡 -->
+              <!-- index 就能判斷是edit or new，而印出對應的form表單 -->
               <%= link_to 'Edit', admin_categories_path(id: category.id) %>
               <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?"} %>
             </td>

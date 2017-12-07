@@ -12,6 +12,7 @@
 $ git clone https://github.com/ALPHACamp/web-online-restaurant-forum.git
 $ bundle install
 $ rails db:migrate
+$ rails db:seed
 $ rails dev:fake
 ```
 
